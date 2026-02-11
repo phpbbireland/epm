@@ -241,5 +241,6 @@ Michael O'Toole (2026)
 *Created* with PHP, MySQL, JavaScript & Claude AI  
 
 ![Image2](https://github.com/phpbbireland/epm/blob/main/images/epm2.png)  
-
+...
 ![Image3](https://github.com/phpbbireland/epm/blob/main/images/epm3.png)  
+...
