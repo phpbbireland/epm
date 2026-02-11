@@ -1,4 +1,4 @@
-![Dashboard](https://github.com/phpbbireland/epm/blob/main/images/epm1.png)  
+![Dashboard](https://github.com/phpbbireland/epm/blob/main/images/epm1s.png)  
 
 # Electronic Parts Manager (epm)
 
