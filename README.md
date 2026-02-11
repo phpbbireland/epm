@@ -51,7 +51,7 @@ The application uses a single table `parts` with the following structure:
    ```
    Or manually run the SQL commands in `database.sql`
 
-3. The database `electronics_parts` will be created with sample data
+3. The database `epm` will be created with sample data
 
 ### 3. Configuration
 
@@ -60,7 +60,7 @@ The application uses a single table `parts` with the following structure:
    define('DB_HOST', 'localhost');
    define('DB_USER', 'your_username');
    define('DB_PASS', 'your_password');
-   define('DB_NAME', 'electronics_parts');
+   define('DB_NAME', 'epm');
    ```
 
 ### 4. Web Server Setup
@@ -68,22 +68,23 @@ The application uses a single table `parts` with the following structure:
 #### Using Apache (XAMPP/WAMP/LAMP)
 
 1. Copy all files to your web server directory:
-   - XAMPP: `C:\xampp\htdocs\electronics_parts_manager\`
-   - WAMP: `C:\wamp64\www\electronics_parts_manager\`
-   - LAMP: `/var/www/html/electronics_parts_manager/`
+   - XAMPP: `C:\xampp\htdocs\epm\`
+   - WAMP: `C:\wamp64\www\epm\`
+   - LAMP: `/var/www/html/epm/`
+   - XAMPP: `/opt/lampp/htdocs/epm/`
 
 2. Start Apache and MySQL services
 
 3. Access the application:
    ```
-   http://localhost/electronics_parts_manager/
+epm
    ```
 
 #### Using PHP Built-in Server (Development)
 
 1. Navigate to the project directory:
    ```bash
-   cd electronics_parts_manager
+   cd epm
    ```
 
 2. Start the PHP server:
