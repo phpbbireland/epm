@@ -1,6 +1,7 @@
 # Electronic Parts Manager
 
 A complete web application for managing electronic parts inventory with CRUD operations (Create, Read, Update, Delete).
+Build with Claude AI and my 2 cents, works perfectly but might needs some UI tweaks.  
 
 ## Features
 
@@ -227,7 +228,7 @@ epm (electronics_parts_manager)/
 AI geterated code may have restrictions, I don't know, I'm new to this?  
 Free to use for personal projects.  
 
-## Recomendations  
+## Recommendations  
 Use on local server only...  
 
 ## Author
