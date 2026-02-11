@@ -77,7 +77,7 @@ The application uses a single table `parts` with the following structure:
 
 3. Access the application:
    ```
-epm
+   epm
    ```
 
 #### Using PHP Built-in Server (Development)
