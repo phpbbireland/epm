@@ -1,3 +1,5 @@
+![Image1](https://github.com/phpbbireland/epm/blob/main/images/epm1.png)  
+
 # Electronic Parts Manager (epm)
 
 A complete web application for managing electronic parts inventory with CRUD operations (Create, Read, Update, Delete).  
@@ -236,5 +238,6 @@ Use on local server only...
 ## Author
 Michael O'Toole (2026)  
 
-*Created* with PHP, MySQL, JavaScript & Claude AI
+*Created* with PHP, MySQL, JavaScript & Claude AI  
+
 ![Image1](https://github.com/phpbbireland/epm/blob/main/images/epm1.png)
