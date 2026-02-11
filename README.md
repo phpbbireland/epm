@@ -223,9 +223,13 @@ electronics_parts_manager/
 - Parts location tracking
 
 ## License
+AI geterated code may have restrictions?  
+Free to use for personal projects.  
 
-Free to use for personal and commercial projects.
+## Recomendations  
+Use on local server only...  
 
 ## Author
+Michael O'Toole  
 
-Created with PHP, MySQL, and JavaScript
+*Created* with PHP, MySQL, JavaScript & Claude AI
