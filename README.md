@@ -100,7 +100,7 @@ epm
 ## File Structure
 
 ```
-electronics_parts_manager/
+epm (electronics_parts_manager)/
 │
 ├── index.html          # Main HTML page
 ├── style.css           # Styling
