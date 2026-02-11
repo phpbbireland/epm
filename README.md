@@ -1,4 +1,4 @@
-# Electronic Parts Manager
+# Electronic Parts Manager (epm)
 
 A complete web application for managing electronic parts inventory with CRUD operations (Create, Read, Update, Delete).  
 Build with Claude AI and my 2 cents, works perfectly but might needs some UI tweaks.  
