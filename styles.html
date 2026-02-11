@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Editor - Electronic Parts Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Pickr Color Picker CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/>
+    <style>
+        .style-editor-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+        }
+
+        .editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .style-section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .style-section h3 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .style-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .style-option:hover {
+            background: #f8f9fa;
+            border-color: #667eea;
+        }
+
+        .style-option-label {
+            font-weight: 500;
+            color: #333;
+            flex: 1;
+        }
+
+        .color-picker-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hex-value {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #666;
+            min-width: 70px;
+            text-align: left;
+        }
+
+        .color-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            border: 2px solid #dee2e6;
+            cursor: pointer;
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .color-preview:hover {
+            transform: scale(1.1);
+        }
+
+        /* Pickr color picker customization */
+        .pcr-app {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .pcr-app .pcr-interaction .pcr-result {
+            font-family: 'Courier New', monospace !important;
+            text-transform: uppercase !important;
+        }
+
+        .pcr-app .pcr-interaction .pcr-save {
+            background: #667eea !important;
+        }
+
+        .pcr-app .pcr-interaction .pcr-save:hover {
+            background: #5568d3 !important;
+        }
+
+        /* Hide the default Pickr button, use our preview box instead */
+        .pcr-button {
+            display: none !important;
+        }
+
+        .color-input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .preview-section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .preview-section h3 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .preview-content {
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            color: #333;
+        }
+
+        .preview-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .code-output {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .code-output h3 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .code-box {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: auto;
+            white-space: pre;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .code-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .css-property {
+            color: #9cdcfe;
+        }
+
+        .css-value {
+            color: #ce9178;
+        }
+
+        .css-selector {
+            color: #d7ba7d;
+        }
+
+        @media (max-width: 768px) {
+            .editor-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Dark theme */
+        .dark-theme .style-section,
+        .dark-theme .preview-section,
+        .dark-theme .code-output {
+            background: #0f3460;
+        }
+
+        .dark-theme .style-section h3,
+        .dark-theme .preview-section h3,
+        .dark-theme .code-output h3 {
+            color: #ccd6f6;
+            border-bottom-color: #64ffda;
+        }
+
+        .dark-theme .style-option {
+            border-color: #16213e;
+            background: #16213e;
+        }
+
+        .dark-theme .style-option:hover {
+            background: #1a1a2e;
+            border-color: #64ffda;
+        }
+
+        .dark-theme .style-option-label {
+            color: #ccd6f6;
+        }
+
+        .dark-theme .preview-content {
+            color: #ccd6f6;
+        }
+
+        .dark-theme .preview-content h4 {
+            color: #ccd6f6;
+        }
+
+        .dark-theme .preview-content p {
+            color: #a8b2d1;
+        }
+
+        .dark-theme .hex-value {
+            color: #a8b2d1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🎨 Style Editor</h1>
+            <p>Customize your color scheme</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="parts.html" class="nav-link">Parts</a>
+            <a href="categories.html" class="nav-link">Categories</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+            <a href="styles.html" class="nav-link active">🎨 Styles</a>
+        </nav>
+
+        <!-- Style Editor Content -->
+        <div class="style-editor-container">
+            
+            <!-- Editor Grid -->
+            <div class="editor-grid">
+                <!-- General Colors -->
+                <div class="style-section">
+                    <h3>🎨 General Colors</h3>
+                    <div class="style-option" onclick="openColorPicker('background')">
+                        <span class="style-option-label">Background Color</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-background" style="background: #f5f7fa;"></div>
+                            <span class="hex-value" id="hex-background">#f5f7fa</span>
+                        </div>
+                        <input type="color" id="color-background" class="color-input" value="#f5f7fa">
+                    </div>
+                    <div class="style-option" onclick="openColorPicker('text')">
+                        <span class="style-option-label">Text Color</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-text" style="background: #333333;"></div>
+                            <span class="hex-value" id="hex-text">#333333</span>
+                        </div>
+                        <input type="color" id="color-text" class="color-input" value="#333333">
+                    </div>
+                    <div class="style-option" onclick="openColorPicker('header')">
+                        <span class="style-option-label">Header Background</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-header" style="background: #667eea;"></div>
+                            <span class="hex-value" id="hex-header">#667eea</span>
+                        </div>
+                        <input type="color" id="color-header" class="color-input" value="#667eea">
+                    </div>
+                    <div class="style-option" onclick="openColorPicker('header-text')">
+                        <span class="style-option-label">Header Text</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-header-text" style="background: #ffffff;"></div>
+                            <span class="hex-value" id="hex-header-text">#ffffff</span>
+                        </div>
+                        <input type="color" id="color-header-text" class="color-input" value="#ffffff">
+                    </div>
+                </div>
+
+                <!-- Button Colors -->
+                <div class="style-section">
+                    <h3>🔘 Button Colors</h3>
+                    <div class="style-option" onclick="openColorPicker('btn-primary')">
+                        <span class="style-option-label">Primary Button</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-btn-primary" style="background: #667eea;"></div>
+                            <span class="hex-value" id="hex-btn-primary">#667eea</span>
+                        </div>
+                        <input type="color" id="color-btn-primary" class="color-input" value="#667eea">
+                    </div>
+                    <div class="style-option" onclick="openColorPicker('btn-primary-hover')">
+                        <span class="style-option-label">Primary Hover</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-btn-primary-hover" style="background: #5568d3;"></div>
+                            <span class="hex-value" id="hex-btn-primary-hover">#5568d3</span>
+                        </div>
+                        <input type="color" id="color-btn-primary-hover" class="color-input" value="#5568d3">
+                    </div>
+                    <div class="style-option" onclick="openColorPicker('btn-secondary')">
+                        <span class="style-option-label">Secondary Button</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-btn-secondary" style="background: #6c757d;"></div>
+                            <span class="hex-value" id="hex-btn-secondary">#6c757d</span>
+                        </div>
+                        <input type="color" id="color-btn-secondary" class="color-input" value="#6c757d">
+                    </div>
+                    <div class="style-option" onclick="openColorPicker('btn-secondary-hover')">
+                        <span class="style-option-label">Secondary Hover</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-btn-secondary-hover" style="background: #5a6268;"></div>
+                            <span class="hex-value" id="hex-btn-secondary-hover">#5a6268</span>
+                        </div>
+                        <input type="color" id="color-btn-secondary-hover" class="color-input" value="#5a6268">
+                    </div>
+                </div>
+
+                <!-- Card Colors -->
+                <div class="style-section">
+                    <h3>📋 Card Colors</h3>
+                    <div class="style-option" onclick="openColorPicker('card-background')">
+                        <span class="style-option-label">Card Background</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-card-background" style="background: #ffffff;"></div>
+                            <span class="hex-value" id="hex-card-background">#ffffff</span>
+                        </div>
+                        <input type="color" id="color-card-background" class="color-input" value="#ffffff">
+                    </div>
+                    <div class="style-option" onclick="openColorPicker('card-border')">
+                        <span class="style-option-label">Card Border</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-card-border" style="background: #dee2e6;"></div>
+                            <span class="hex-value" id="hex-card-border">#dee2e6</span>
+                        </div>
+                        <input type="color" id="color-card-border" class="color-input" value="#dee2e6">
+                    </div>
+                    <div class="style-option" onclick="openColorPicker('accent')">
+                        <span class="style-option-label">Accent Color</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-accent" style="background: #667eea;"></div>
+                            <span class="hex-value" id="hex-accent">#667eea</span>
+                        </div>
+                        <input type="color" id="color-accent" class="color-input" value="#667eea">
+                    </div>
+                </div>
+
+                <!-- Link Colors -->
+                <div class="style-section">
+                    <h3>🔗 Link Colors</h3>
+                    <div class="style-option" onclick="openColorPicker('link')">
+                        <span class="style-option-label">Link Color</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-link" style="background: #667eea;"></div>
+                            <span class="hex-value" id="hex-link">#667eea</span>
+                        </div>
+                        <input type="color" id="color-link" class="color-input" value="#667eea">
+                    </div>
+                    <div class="style-option" onclick="openColorPicker('link-hover')">
+                        <span class="style-option-label">Link Hover</span>
+                        <div class="color-picker-controls">
+                            <div class="color-preview" id="preview-link-hover" style="background: #5568d3;"></div>
+                            <span class="hex-value" id="hex-link-hover">#5568d3</span>
+                        </div>
+                        <input type="color" id="color-link-hover" class="color-input" value="#5568d3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Preview -->
+            <div class="preview-section">
+                <h3>👁️ Live Preview</h3>
+                <div class="preview-content" id="preview-area">
+                    <h4>Sample Content</h4>
+                    <p>This is sample text to preview your color scheme. Links will appear <a href="#">like this</a>.</p>
+                    <div style="margin: 20px 0;">
+                        <button class="preview-button" id="preview-btn-primary-demo">Primary Button</button>
+                        <button class="preview-button" id="preview-btn-secondary-demo">Secondary Button</button>
+                    </div>
+                    <div style="background: var(--card-bg, white); padding: 15px; border: 1px solid var(--card-border, #dee2e6); border-radius: 8px; margin-top: 20px;">
+                        <strong>Sample Card</strong>
+                        <p style="margin: 10px 0 0 0;">This is how cards will look with your color scheme.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generated CSS Code -->
+            <div class="code-output">
+                <h3>📝 Generated CSS Code</h3>
+                <div class="code-box" id="css-output">/* Copy this CSS to customize your styles */</div>
+                <div class="code-actions">
+                    <button class="btn btn-primary" onclick="copyCSS()">📋 Copy CSS</button>
+                    <button class="btn btn-secondary" onclick="resetColors()">🔄 Reset to Defaults</button>
+                    <button class="btn btn-secondary" onclick="downloadCSS()">💾 Download CSS File</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Pickr Color Picker JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script src="config-loader.js"></script>
+    <script src="script.js"></script>
+    <script src="styles.js"></script>
+</body>
+</html>

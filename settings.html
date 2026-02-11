@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Electronic Parts Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Electronic Parts Manager</h1>
+            <p>Manage your electronic components inventory</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="parts.html" class="nav-link">Parts</a>
+            <a href="categories.html" class="nav-link">Categories</a>
+            <a href="settings.html" class="nav-link active">Settings</a>
+            <a href="styles.html" class="nav-link">🎨 Styles</a>
+        </nav>
+
+        <!-- Settings Content -->
+        <div class="settings-content">
+            <div class="settings-header">
+                <h2>⚙️ Application Settings</h2>
+                <span class="version-badge">v<span id="app-version">Loading...</span></span>
+            </div>
+            
+            <div class="settings-section">
+                <h3>ℹ️ Application Info</h3>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label for="version">Version Number</label>
+                        <p class="setting-description">Application version number</p>
+                    </div>
+                    <input type="text" id="version" class="setting-input" placeholder="1.0.0">
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h3>🎨 Appearance</h3>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label for="theme">Theme</label>
+                        <p class="setting-description">Choose between light and dark theme</p>
+                    </div>
+                    <select id="theme" class="setting-input">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>📊 Inventory Settings</h3>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label for="low_stock_threshold">Low Stock Threshold</label>
+                        <p class="setting-description">Parts with quantity at or below this number will be marked as low stock</p>
+                    </div>
+                    <input type="number" id="low_stock_threshold" class="setting-input" min="0" value="5">
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>🔔 Notifications</h3>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label for="enable_notifications">Enable Toast Notifications</label>
+                        <p class="setting-description">Show success/error messages when performing actions</p>
+                    </div>
+                    <select id="enable_notifications" class="setting-input">
+                        <option value="1">Enabled</option>
+                        <option value="0">Disabled</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>💰 Display Settings</h3>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label for="currency_symbol">Currency Symbol</label>
+                        <p class="setting-description">Currency symbol for future pricing features</p>
+                    </div>
+                    <input type="text" id="currency_symbol" class="setting-input" maxlength="5" value="$">
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label for="items_per_page">Items Per Page</label>
+                        <p class="setting-description">Number of items to display per page in tables</p>
+                    </div>
+                    <input type="number" id="items_per_page" class="setting-input" min="10" max="200" value="50">
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label for="date_format">Date Format</label>
+                        <p class="setting-description">Format for displaying dates</p>
+                    </div>
+                    <select id="date_format" class="setting-input">
+                        <option value="DD/MM/YYYY">DD/MM/YYYY (European)</option>
+                        <option value="MM/DD/YYYY">MM/DD/YYYY (US)</option>
+                        <option value="YYYY-MM-DD">YYYY-MM-DD (ISO)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="settings-actions">
+                <button onclick="saveSettings()" class="btn btn-primary">💾 Save Settings</button>
+                <button onclick="resetSettings()" class="btn btn-secondary">🔄 Reset to Defaults</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="config-loader.js"></script>
+    <script src="settings.js"></script>
+</body>
+</html>

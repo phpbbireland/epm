@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parts Manager - Electronic Parts Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Electronic Parts Manager</h1>
+            <p>Manage your electronic components inventory</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="parts.html" class="nav-link active">Parts</a>
+            <a href="categories.html" class="nav-link">Categories</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+            <a href="styles.html" class="nav-link">🎨 Styles</a>
+        </nav>
+
+        <!-- Search and Filter -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="🔍 Search by name, category, or description...">
+            <a href="help.html" class="btn btn-secondary">❓ Help</a>
+            <a href="add-part.html" class="btn btn-primary">➕ Add New Part</a>
+        </div>
+
+        <!-- Parts Table -->
+        <div class="table-container">
+            <table id="parts-table">
+                <thead>
+                    <tr>
+                        <th style="display: none;">ID</th>
+                        <th>Thumbnail</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Stock</th>
+                        <th>Value</th>
+                        <th>Size</th>
+                        <th>Links</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="parts-tbody">
+                    <tr>
+                        <td colspan="10" class="loading">Loading parts...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <p>Total Parts: <span id="total-count">0</span></p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="config-loader.js"></script>
+    <script src="url-utils.js"></script>
+    <script src="parts.js"></script>
+</body>
+</html>

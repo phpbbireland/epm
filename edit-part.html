@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Part - Electronic Parts Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Electronic Parts Manager</h1>
+            <p>Edit electronic component</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="parts.html" class="nav-link active">Parts</a>
+            <a href="categories.html" class="nav-link">Categories</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+        </nav>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="parts.html">← Back to Parts</a>
+            <span class="separator">/</span>
+            <span id="part-name-breadcrumb">Edit Part</span>
+        </div>
+
+        <!-- Edit Part Form -->
+        <div class="edit-part-container">
+            <h2 id="edit-part-title">Edit Part</h2>
+            
+            <form id="edit-part-form">
+                <input type="hidden" id="part-id">
+                
+                <!-- Row 1: Name and Thumbnail -->
+                <div class="form-row-2col">
+                    <div class="form-group">
+                        <label for="name">Part Name *</label>
+                        <input type="text" id="name" required placeholder="e.g., Arduino Uno R3">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="thumbnail">Thumbnail Image</label>
+                        <div class="thumbnail-upload-row">
+                            <div class="thumbnail-click-area" onclick="document.getElementById('thumbnail').click();">
+                                <img id="thumbnail-preview-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23f0f0f0' rx='4'/%3E%3Cpath d='M24 14v20M14 24h20' stroke='%23999' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" alt="Upload thumbnail" title="Click to upload thumbnail">
+                            </div>
+                            <input type="file" id="thumbnail" accept="image/jpeg,image/jpg,image/png,image/gif" style="display: none;">
+                            <button type="button" class="btn-remove-thumb-inline" onclick="removeThumbnail()" style="display: none;">× Remove</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Row 2: Category and Quantity/Value/Size -->
+                <div class="form-row-mixed">
+                    <div class="form-group form-group-wide">
+                        <label for="category">Category *</label>
+                        <select id="category" required>
+                            <option value="">-- Select Category --</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group form-group-narrow">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" id="quantity" min="0" value="0" placeholder="0">
+                    </div>
+                    
+                    <div class="form-group form-group-narrow">
+                        <label for="value">Value</label>
+                        <input type="text" id="value" placeholder="e.g., 10kΩ">
+                    </div>
+                    
+                    <div class="form-group form-group-narrow">
+                        <label for="size">Size/Package</label>
+                        <input type="text" id="size" placeholder="e.g., 0805">
+                    </div>
+                </div>
+                
+                <!-- Row 3: Product Link and YouTube Link -->
+                <div class="form-row-2col">
+                    <div class="form-group">
+                        <label for="link">Product Link</label>
+                        <input type="url" id="link" placeholder="https://...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="youtube-link">YouTube Tutorial Link</label>
+                        <input type="url" id="youtube-link" placeholder="https://youtube.com/...">
+                    </div>
+                </div>
+                
+                <!-- Row 4: Folder Links (3 columns) -->
+                <div class="form-row-3col">
+                    <div class="form-group">
+                        <label for="project-folder-link">Project Folder</label>
+                        <input type="text" id="project-folder-link" placeholder="file:///C:/Projects/...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="code-folder-link">Code Folder</label>
+                        <input type="text" id="code-folder-link" placeholder="file:///C:/Code/...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="freecad-folder-link">FreeCAD Folder</label>
+                        <input type="text" id="freecad-folder-link" placeholder="file:///C:/CAD/...">
+                    </div>
+                </div>
+                
+                <!-- Row 5: Description (full width) -->
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="4" placeholder="Enter part description, notes, or specifications..."></textarea>
+                </div>
+                
+                <div class="edit-actions">
+                    <button type="submit" class="btn btn-primary">💾 Save Changes</button>
+                    <button type="button" class="btn btn-move" onclick="showMoveModal()">🔄 Move to Category</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelEdit()">✖️ Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Part Info Card -->
+        <div class="part-info-card">
+            <h3>Part Information</h3>
+            <div class="info-row">
+                <span class="info-label">Part ID:</span>
+                <span class="info-value" id="display-id">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Current Category:</span>
+                <span class="info-value" id="display-category">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Stock Status:</span>
+                <span class="info-value" id="display-stock">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Created:</span>
+                <span class="info-value" id="display-created">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Last Updated:</span>
+                <span class="info-value" id="display-updated">-</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Move Part Modal -->
+    <div id="move-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Move Part to Category</h3>
+                <button class="modal-close" onclick="closeMoveModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Moving: <strong id="move-part-name"></strong></p>
+                <p class="current-category">Current category: <span id="current-category-name"></span></p>
+                
+                <div class="form-group">
+                    <label for="move-category-select">Select Destination Category:</label>
+                    <select id="move-category-select" class="category-tree-select">
+                        <option value="">-- Select Category --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeMoveModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="confirmMovePart()">Move Part</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="config-loader.js"></script>
+    <script src="edit-part.js"></script>
+</body>
+</html>

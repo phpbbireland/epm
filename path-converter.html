@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path Converter - Electronic Parts Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Electronic Parts Manager</h1>
+            <p>Manage your electronic components inventory</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="parts.html" class="nav-link">Parts</a>
+            <a href="categories.html" class="nav-link">Categories</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+        </nav>
+
+        <!-- Path Converter Tool -->
+        <div class="converter-content">
+            <h2>🔗 Local Folder Path Converter</h2>
+            <p class="subtitle">Convert Windows/Mac/Linux file paths to browser-compatible file:// URLs</p>
+            
+            <div class="converter-section">
+                <h3>📂 Convert Your Path</h3>
+                
+                <div class="converter-box">
+                    <div class="form-group">
+                        <label for="input-path">Paste Your File Path:</label>
+                        <input type="text" id="input-path" class="converter-input" 
+                               placeholder="C:\Users\YourName\Documents\Projects\Arduino">
+                        <p class="hint">Examples: C:\Projects\Arduino, /home/user/Documents, \\server\share\files</p>
+                    </div>
+                    
+                    <div class="converter-buttons">
+                        <button onclick="convertPath()" class="btn btn-primary">🔄 Convert</button>
+                        <button onclick="clearConverter()" class="btn btn-secondary">Clear</button>
+                    </div>
+                    
+                    <div id="result-section" style="display: none;">
+                        <div class="form-group">
+                            <label for="output-url">Converted URL:</label>
+                            <div class="output-container">
+                                <input type="text" id="output-url" class="converter-output" readonly>
+                                <button onclick="copyToClipboard()" class="btn btn-copy">📋 Copy</button>
+                            </div>
+                        </div>
+                        
+                        <div class="test-link-section">
+                            <p><strong>Test your link:</strong></p>
+                            <a id="test-link" href="#" target="_blank" class="link-badge">🔗 Click to Test</a>
+                            <p class="hint">If link doesn't open, right-click and select "Copy Link" then paste into your browser</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3>📚 Quick Guide</h3>
+                
+                <div class="guide-grid">
+                    <div class="guide-card">
+                        <h4>🪟 Windows Paths</h4>
+                        <p><strong>Input:</strong> <code>C:\Users\Name\Projects</code></p>
+                        <p><strong>Output:</strong> <code>file:///C:/Users/Name/Projects</code></p>
+                        <ul>
+                            <li>Change backslashes to forward slashes</li>
+                            <li>Add <code>file:///</code> prefix</li>
+                            <li>Keep drive letter</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <h4>🍎 Mac/Linux Paths</h4>
+                        <p><strong>Input:</strong> <code>/home/user/Projects</code></p>
+                        <p><strong>Output:</strong> <code>file:///home/user/Projects</code></p>
+                        <ul>
+                            <li>Already uses forward slashes</li>
+                            <li>Just add <code>file://</code> prefix</li>
+                            <li>No changes to path needed</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <h4>🌐 Network Shares</h4>
+                        <p><strong>Input:</strong> <code>\\server\share\folder</code></p>
+                        <p><strong>Output:</strong> <code>file:////server/share/folder</code></p>
+                        <ul>
+                            <li>Change backslashes to forward slashes</li>
+                            <li>Add <code>file:////</code> (4 slashes)</li>
+                            <li>Server name comes after slashes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <h4>☁️ Cloud Storage (Recommended)</h4>
+                        <p><strong>Google Drive, Dropbox, OneDrive</strong></p>
+                        <ul>
+                            <li>✅ Works in all browsers</li>
+                            <li>✅ No file:// restrictions</li>
+                            <li>✅ Access from anywhere</li>
+                            <li>✅ Easy sharing</li>
+                        </ul>
+                        <p class="hint">Just copy the share link directly!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3>⚠️ Browser Limitations</h3>
+                <div class="warning-box">
+                    <p><strong>Important:</strong> Modern browsers restrict <code>file://</code> links for security reasons.</p>
+                    <ul>
+                        <li><strong>Chrome/Edge:</strong> May block file:// links. Use right-click → "Copy Link" → paste in address bar</li>
+                        <li><strong>Firefox:</strong> Usually works but requires user permission</li>
+                        <li><strong>Safari:</strong> More restrictive with local file access</li>
+                    </ul>
+                    <p><strong>Best Solution:</strong> Use cloud storage (Google Drive, Dropbox, OneDrive) or a local web server for full compatibility.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="config-loader.js"></script>
+    <script src="path-converter.js"></script>
+</body>
+</html>

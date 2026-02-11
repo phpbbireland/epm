@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Parts Manager - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>📦 Electronic Parts Manager</h1>
+                    <p>Manage your electronic components inventory</p>
+                </div>
+                <span class="version-badge-header">v<span id="app-version">...</span></span>
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link active">Dashboard</a>
+            <a href="parts.html" class="nav-link">Parts</a>
+            <a href="categories.html" class="nav-link">Categories</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+            <a href="styles.html" class="nav-link">🎨 Styles</a>
+        </nav>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <h2>Welcome to Electronic Parts Manager</h2>
+            
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-info">
+                        <h3 id="total-parts-count">0</h3>
+                        <p>Total Parts</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">📁</div>
+                    <div class="stat-info">
+                        <h3 id="total-categories-count">0</h3>
+                        <p>Categories</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <h3 id="in-stock-count">0</h3>
+                        <p>In Stock</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card warning">
+                    <div class="stat-icon">⚠️</div>
+                    <div class="stat-info">
+                        <h3 id="low-stock-count">0</h3>
+                        <p>Low Stock</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card danger">
+                    <div class="stat-icon">❌</div>
+                    <div class="stat-info">
+                        <h3 id="out-stock-count">0</h3>
+                        <p>Out of Stock</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-buttons">
+                    <a href="parts.html?action=add" class="action-btn">
+                        <span class="action-icon">➕</span>
+                        <span>Add New Part</span>
+                    </a>
+                    <a href="parts.html" class="action-btn">
+                        <span class="action-icon">🔍</span>
+                        <span>Browse Parts</span>
+                    </a>
+                    <a href="categories.html?action=add" class="action-btn">
+                        <span class="action-icon">📁</span>
+                        <span>Add Category</span>
+                    </a>
+                    <a href="categories.html" class="action-btn">
+                        <span class="action-icon">📋</span>
+                        <span>Manage Categories</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Low Stock Alert -->
+            <div class="low-stock-section">
+                <h3>Low Stock Alerts</h3>
+                <div id="low-stock-items" class="alert-list">
+                    <p class="loading">Loading...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config-loader.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,22 +1,231 @@
-# epm (Electronics Parts Manager)
-First Web App built with Claude AI
+# Electronic Parts Manager
 
-I was just checking out Claude AI and ended up with a simple Web Application to keep track of my parts (see image directory screenshots).  
+A complete web application for managing electronic parts inventory with CRUD operations (Create, Read, Update, Delete).
 
-**Here's the overview...**  
-We create a top level Category for each type of type of component/device: Displays, Components, Modules etc...  
-Inside each top level category we can add sub-categories which in turn can have sub-categories...  
+## Features
 
-Example 1: We create a category for Displays inside of which we can have sub-categories for the various types, LCD, TFT, 7 Segement etc...  
-Example 2: We create a category for descrete Components with usual sub-categories for Diodes, Caps, Resistors etc..  
+- ✅ Add new electronic parts
+- ✅ View all parts in a table
+- ✅ Edit existing parts
+- ✅ Delete parts
+- ✅ Search/filter parts by name, category, or description
+- ✅ Clean, responsive UI
+- ✅ Real-time updates
+- ✅ Toast notifications for user feedback
 
-Not only do we track quantities but we also store links to: Source / Example Code, Suppliers, Git Repo, Project Folder etc...  
-Links to web sources open in browser, links to code if local (on your PC) copy the path to the clipboard for openibg in file manager...  
+## Technologies Used
 
-**Database Storage**  
-To store the information we need a local database, this requires running a local server such as XAMPP.  
+- **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
+- **Backend:** PHP 7.4+
+- **Database:** MySQL 5.7+
 
-It's fully functioning as is and include the SQL file to create the database etc...  
+## Database Schema
 
-![Example Image](https://github.com/phpbbireland/epm/blob/main/images/eppm-image-parts.png)  
-Mike
+The application uses a single table `parts` with the following structure:
+
+| Column | Type | Description |
+|--------|------|-------------|
+| id | INT (Primary Key, Auto Increment) | Unique identifier |
+| name | VARCHAR(255) | Part name |
+| category | VARCHAR(100) | Part category |
+| link | VARCHAR(500) | Product/datasheet link |
+| description | TEXT | Part description |
+| created_at | TIMESTAMP | Creation timestamp |
+| updated_at | TIMESTAMP | Last update timestamp |
+
+## Installation Steps
+
+### 1. Prerequisites
+
+- PHP 7.4 or higher
+- MySQL 5.7 or higher
+- Apache/Nginx web server
+- Web browser
+
+### 2. Database Setup
+
+1. Open phpMyAdmin or MySQL command line
+2. Import the database schema:
+   ```sql
+   mysql -u root -p < database.sql
+   ```
+   Or manually run the SQL commands in `database.sql`
+
+3. The database `electronics_parts` will be created with sample data
+
+### 3. Configuration
+
+1. Edit `config.php` and update database credentials:
+   ```php
+   define('DB_HOST', 'localhost');
+   define('DB_USER', 'your_username');
+   define('DB_PASS', 'your_password');
+   define('DB_NAME', 'electronics_parts');
+   ```
+
+### 4. Web Server Setup
+
+#### Using Apache (XAMPP/WAMP/LAMP)
+
+1. Copy all files to your web server directory:
+   - XAMPP: `C:\xampp\htdocs\electronics_parts_manager\`
+   - WAMP: `C:\wamp64\www\electronics_parts_manager\`
+   - LAMP: `/var/www/html/electronics_parts_manager/`
+
+2. Start Apache and MySQL services
+
+3. Access the application:
+   ```
+   http://localhost/electronics_parts_manager/
+   ```
+
+#### Using PHP Built-in Server (Development)
+
+1. Navigate to the project directory:
+   ```bash
+   cd electronics_parts_manager
+   ```
+
+2. Start the PHP server:
+   ```bash
+   php -S localhost:8000
+   ```
+
+3. Access the application:
+   ```
+   http://localhost:8000
+   ```
+
+## File Structure
+
+```
+electronics_parts_manager/
+│
+├── index.html          # Main HTML page
+├── style.css           # Styling
+├── script.js           # Frontend JavaScript
+├── api.php             # Backend API for CRUD operations
+├── config.php          # Database configuration
+├── database.sql        # Database schema and sample data
+└── README.md           # This file
+```
+
+## Usage Guide
+
+### Adding a New Part
+
+1. Fill in the form fields:
+   - **Name:** (Required) Name of the electronic part
+   - **Category:** (Required) Category/type of the part
+   - **Link:** (Optional) URL to product page or datasheet
+   - **Description:** (Optional) Additional details
+
+2. Click "Add Part" button
+
+### Editing a Part
+
+1. Click the "Edit" button next to the part you want to modify
+2. Form will populate with existing data
+3. Make your changes
+4. Click "Update Part" button
+5. Click "Cancel" to abort editing
+
+### Deleting a Part
+
+1. Click the "Delete" button next to the part
+2. Confirm the deletion in the popup dialog
+
+### Searching Parts
+
+1. Use the search box to filter parts
+2. Search works on: Name, Category, and Description
+3. Results update in real-time
+
+## API Endpoints
+
+### GET Requests
+
+- `api.php?action=all` - Get all parts
+- `api.php?action=single&id={id}` - Get single part by ID
+
+### POST Requests
+
+- `api.php?action=create` - Create new part
+  ```json
+  {
+    "name": "Arduino Uno",
+    "category": "Microcontrollers",
+    "link": "https://example.com",
+    "description": "ATmega328P board"
+  }
+  ```
+
+### PUT Requests
+
+- `api.php?action=update` - Update existing part
+  ```json
+  {
+    "id": 1,
+    "name": "Arduino Uno R3",
+    "category": "Microcontrollers",
+    "link": "https://example.com",
+    "description": "Updated description"
+  }
+  ```
+
+### DELETE Requests
+
+- `api.php?action=delete&id={id}` - Delete part by ID
+
+## Security Features
+
+- ✅ SQL injection prevention using prepared statements
+- ✅ XSS protection with HTML escaping
+- ✅ Input validation on both client and server side
+- ✅ HTTP method verification
+
+## Browser Compatibility
+
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+- Opera
+
+## Troubleshooting
+
+### Database Connection Error
+
+- Check database credentials in `config.php`
+- Ensure MySQL service is running
+- Verify database exists
+
+### Parts Not Loading
+
+- Check browser console for JavaScript errors
+- Verify `api.php` is accessible
+- Check file permissions
+
+### Cannot Add/Edit/Delete
+
+- Check database user permissions
+- Verify API endpoint URLs
+- Check browser network tab for errors
+
+## Future Enhancements
+
+- Image upload for parts
+- Quantity tracking
+- Multiple user accounts
+- Export to CSV/PDF
+- Advanced filtering options
+- Barcode/QR code generation
+- Parts location tracking
+
+## License
+
+Free to use for personal and commercial projects.
+
+## Author
+
+Created with PHP, MySQL, and JavaScript

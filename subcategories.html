@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subcategories Manager - Electronic Parts Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Electronic Parts Manager</h1>
+            <p>Manage your electronic components inventory</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="parts.html" class="nav-link">Parts</a>
+            <a href="categories.html" class="nav-link active">Categories</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+        </nav>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="categories.html">← Back to Categories</a>
+            <span class="separator">/</span>
+            <span id="parent-category-name">Loading...</span>
+        </div>
+
+        <!-- Add/Edit Subcategory Form -->
+        <div class="form-container" id="form-section">
+            <h2 id="form-title">Add New Subcategory</h2>
+            <form id="subcategory-form">
+                <input type="hidden" id="subcategory-id">
+                <input type="hidden" id="parent-id">
+                
+                <div class="form-group">
+                    <label for="subcategory-name">Subcategory Name *</label>
+                    <input type="text" id="subcategory-name" required placeholder="e.g., Arduino Boards">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subcategory-description">Description</label>
+                    <textarea id="subcategory-description" rows="3" placeholder="Enter subcategory description..."></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="subcategory-submit-btn">Add Subcategory</button>
+                    <button type="button" class="btn btn-secondary" id="subcategory-cancel-btn" style="display: none;">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="search-container">
+            <div></div>
+            <button class="btn btn-primary" onclick="toggleForm()">➕ Add New Subcategory</button>
+        </div>
+
+        <!-- Subcategories Table -->
+        <div class="table-container">
+            <table id="subcategories-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Parts Count</th>
+                        <th>Sub-Subcategories</th>
+                        <th>Manage</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="subcategories-tbody">
+                    <tr>
+                        <td colspan="7" class="loading">Loading subcategories...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <p>Total Subcategories: <span id="subcategory-count">0</span></p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="config-loader.js"></script>
+    <script src="subcategories.js"></script>
+</body>
+</html>

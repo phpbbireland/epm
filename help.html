@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Electronic Parts Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Electronic Parts Manager</h1>
+            <p>Manage your electronic components inventory</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="parts.html" class="nav-link">Parts</a>
+            <a href="categories.html" class="nav-link">Categories</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+        </nav>
+
+        <div class="settings-content">
+            <h2>📚 Help & Documentation</h2>
+            
+            <div class="info-box">
+                <h4>🔗 Linking to Local Folders</h4>
+                <p>You can link to folders on your computer or network using file:// URLs.</p>
+                
+                <h5>Windows Paths:</h5>
+                <ul>
+                    <li><strong>Local Drive:</strong> <code>file:///C:/Projects/Arduino</code></li>
+                    <li><strong>Network Share:</strong> <code>file:////server/shared/projects</code></li>
+                    <li><strong>Another Drive:</strong> <code>file:///D:/Documents/Electronics</code></li>
+                </ul>
+                
+                <h5>Mac/Linux Paths:</h5>
+                <ul>
+                    <li><strong>User Folder:</strong> <code>file:///home/username/projects</code></li>
+                    <li><strong>Documents:</strong> <code>file:///Users/username/Documents/Arduino</code></li>
+                    <li><strong>Root Path:</strong> <code>file:///var/data/electronics</code></li>
+                </ul>
+                
+                <h5>Important Rules:</h5>
+                <ul>
+                    <li>✅ Always use forward slashes <code>/</code></li>
+                    <li>✅ Windows paths need <strong>three</strong> slashes: <code>file:///</code></li>
+                    <li>✅ Network shares need <strong>four</strong> slashes: <code>file:////</code></li>
+                    <li>❌ Don't use backslashes <code>\</code></li>
+                    <li>❌ Don't forget the protocol <code>file://</code></li>
+                </ul>
+                
+                <h5>Converting Windows Paths:</h5>
+                <table style="width: 100%; margin-top: 10px;">
+                    <thead>
+                        <tr>
+                            <th>Windows Path</th>
+                            <th>file:// URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>C:\Projects\Arduino</code></td>
+                            <td><code>file:///C:/Projects/Arduino</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>\\server\share\files</code></td>
+                            <td><code>file:////server/share/files</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>D:\CAD\FreeCAD</code></td>
+                            <td><code>file:///D:/CAD/FreeCAD</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="info-box">
+                <h4>⚠️ Browser Security Restrictions</h4>
+                <p>Modern browsers block file:// links for security reasons when clicked from web pages.</p>
+                
+                <h5>Workarounds:</h5>
+                <ul>
+                    <li><strong>Right-Click Method:</strong> Right-click the link → "Copy Link Address" → Paste in File Explorer/Finder address bar</li>
+                    <li><strong>Cloud Storage:</strong> Use Google Drive, Dropbox, OneDrive links instead (no restrictions)</li>
+                    <li><strong>Local Server:</strong> Host files on localhost (e.g., <code>http://localhost/files</code>)</li>
+                    <li><strong>Browser Extensions:</strong> Some extensions allow file:// links (check your browser's extension store)</li>
+                </ul>
+                
+                <h5>Best Practices:</h5>
+                <ul>
+                    <li>✅ Use cloud storage links for easy access from any device</li>
+                    <li>✅ Use GitHub/GitLab for code repositories</li>
+                    <li>✅ Use file:// for personal reference (you can still copy the path)</li>
+                    <li>✅ Mix and match - use what works best for each type of link</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <h4>💡 Quick Tips</h4>
+                <ul>
+                    <li><strong>Low Stock Alerts:</strong> Set your preferred threshold in Settings (default: 5 items)</li>
+                    <li><strong>Dark Theme:</strong> Enable in Settings for comfortable night-time use</li>
+                    <li><strong>Search:</strong> Search works across part names, categories, and descriptions</li>
+                    <li><strong>Keyboard Shortcuts:</strong> Use Tab to navigate forms quickly</li>
+                    <li><strong>Categories:</strong> Create categories before adding parts for better organization</li>
+                    <li><strong>Notifications:</strong> Can be disabled in Settings if you prefer</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <h4>🎨 Link Types & Colors</h4>
+                <table style="width: 100%; margin-top: 10px;">
+                    <thead>
+                        <tr>
+                            <th>Link Type</th>
+                            <th>Color</th>
+                            <th>Icon</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Product Link</td>
+                            <td>Blue</td>
+                            <td>🔗</td>
+                            <td>Manufacturer website, datasheet</td>
+                        </tr>
+                        <tr>
+                            <td>YouTube Video</td>
+                            <td>Red</td>
+                            <td>▶️</td>
+                            <td>Tutorial, review, demonstration</td>
+                        </tr>
+                        <tr>
+                            <td>Project Folder</td>
+                            <td>Green</td>
+                            <td>📁</td>
+                            <td>Documentation, schematics</td>
+                        </tr>
+                        <tr>
+                            <td>Code Folder</td>
+                            <td>Cyan</td>
+                            <td>💻</td>
+                            <td>Source code, firmware</td>
+                        </tr>
+                        <tr>
+                            <td>FreeCAD Folder</td>
+                            <td>Yellow</td>
+                            <td>🔧</td>
+                            <td>3D models, CAD files</td>
+                        </tr>
+                        <tr>
+                            <td>Local Folder</td>
+                            <td>Dark Green</td>
+                            <td>📁</td>
+                            <td>file:// paths (any category)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="parts.html" class="btn btn-primary">← Back to Parts</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="config-loader.js"></script>
+</body>
+</html>

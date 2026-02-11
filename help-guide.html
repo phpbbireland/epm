@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Electronic Parts Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Electronic Parts Manager</h1>
+            <p>Manage your electronic components inventory</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="parts.html" class="nav-link">Parts</a>
+            <a href="categories.html" class="nav-link">Categories</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+        </nav>
+
+        <div class="help-content">
+            <h2>📚 User Guide</h2>
+            
+            <div class="help-section">
+                <h3>🗂️ Categories & Subcategories</h3>
+                <div class="help-card">
+                    <h4>Understanding the Category Hierarchy</h4>
+                    <p>The system supports two-level category organization:</p>
+                    <ul>
+                        <li><strong>Parent Categories:</strong> Top-level categories (e.g., "Microcontrollers", "Sensors")</li>
+                        <li><strong>Subcategories:</strong> Nested under parent categories (e.g., "Arduino" under "Microcontrollers")</li>
+                    </ul>
+                    
+                    <h4>Creating Categories</h4>
+                    <ol>
+                        <li>Go to <strong>Categories</strong> page</li>
+                        <li>Click <strong>"➕ Add New Category"</strong></li>
+                        <li>Enter category name and description</li>
+                        <li>Leave <strong>"Parent Category"</strong> as "None" for top-level category</li>
+                        <li>OR select a parent to create a subcategory</li>
+                        <li>Click <strong>"Add Category"</strong></li>
+                    </ol>
+                    
+                    <h4>Managing Subcategories</h4>
+                    <ol>
+                        <li>On the <strong>Categories</strong> page, find your parent category</li>
+                        <li>Click the blue <strong>subcategories button</strong> (shows count like "3 subs")</li>
+                        <li>You'll be taken to the subcategories page for that parent</li>
+                        <li>Add, edit, or delete subcategories as needed</li>
+                        <li>Click <strong>"← Back to Categories"</strong> to return</li>
+                    </ol>
+                    
+                    <div class="info-box">
+                        <p><strong>💡 Tip:</strong> Even if a category has no subcategories yet, you can click its button to add some!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3>📦 Managing Parts</h3>
+                <div class="help-card">
+                    <h4>Adding Parts</h4>
+                    <ol>
+                        <li>Go to <strong>Parts</strong> page</li>
+                        <li>Click <strong>"➕ Add New Part"</strong></li>
+                        <li>Fill in required fields: Name, Category, Quantity</li>
+                        <li>Add optional links to product pages, folders, and videos</li>
+                        <li>Click <strong>"Add Part"</strong></li>
+                    </ol>
+                    
+                    <h4>Stock Management</h4>
+                    <ul>
+                        <li><span class="stock-badge in-stock">Green badge</span> = Well stocked (6+ items)</li>
+                        <li><span class="stock-badge low-stock">Yellow badge</span> = Low stock (1-5 items)</li>
+                        <li><span class="stock-badge out-of-stock">Red badge</span> = Out of stock (0 items)</li>
+                    </ul>
+                    <p>You can adjust the low stock threshold in Settings.</p>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3>🔗 Local Folder Links</h3>
+                <div class="help-card">
+                    <h4>Using Local Folder Links</h4>
+                    <p>You can link to folders on your computer or network drives. The folder link badges (<strong>📁 Project</strong>, <strong>💻 Code</strong>, <strong>🔧 CAD</strong>) will copy the link to your clipboard when clicked.</p>
+                    
+                    <h4>Link Formats</h4>
+                    <ul>
+                        <li><strong>Windows:</strong> <code>file:///C:/Users/Name/Projects/Arduino</code></li>
+                        <li><strong>Mac/Linux:</strong> <code>file:///home/user/Projects/Arduino</code></li>
+                        <li><strong>Network:</strong> <code>file:////server/share/projects</code></li>
+                        <li><strong>Cloud:</strong> Regular URLs from Google Drive, Dropbox, etc.</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <p><strong>🔧 Need Help?</strong> Use the <a href="path-converter.html" class="converter-link">Path Converter Tool</a> to convert Windows/Mac paths to the correct format!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3>⚙️ Settings</h3>
+                <div class="help-card">
+                    <h4>Customizing Your Experience</h4>
+                    <ul>
+                        <li><strong>Theme:</strong> Switch between Light and Dark modes</li>
+                        <li><strong>Low Stock Threshold:</strong> Set when items are marked as low stock</li>
+                        <li><strong>Notifications:</strong> Enable/disable success messages</li>
+                        <li><strong>Display:</strong> Customize currency symbols and date formats</li>
+                    </ul>
+                    <p>All settings are saved automatically and persist across sessions.</p>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3>🎯 Quick Tips</h3>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-icon">📋</div>
+                        <h4>Copy Folder Links</h4>
+                        <p>Click folder badges to copy links instead of opening them</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon">🔍</div>
+                        <h4>Search Parts</h4>
+                        <p>Use the search box to filter by name, category, or description</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon">🎨</div>
+                        <h4>Dark Mode</h4>
+                        <p>Go to Settings to enable the beautiful dark theme</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon">📊</div>
+                        <h4>Dashboard</h4>
+                        <p>Check your dashboard for low stock alerts and statistics</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h3>❓ Troubleshooting</h3>
+                <div class="help-card">
+                    <h4>Common Issues</h4>
+                    
+                    <p><strong>Q: File links don't open when clicked</strong></p>
+                    <p>A: Modern browsers block <code>file://</code> links for security. That's why folder badges copy the link instead! Just paste it into your file explorer or browser address bar.</p>
+                    
+                    <p><strong>Q: Can't delete a category</strong></p>
+                    <p>A: You can only delete categories that aren't in use. Move or delete parts in that category first, or delete its subcategories.</p>
+                    
+                    <p><strong>Q: Stock badges show wrong colors</strong></p>
+                    <p>A: Check your Low Stock Threshold in Settings. The default is 5 items.</p>
+                    
+                    <p><strong>Q: Changes don't appear</strong></p>
+                    <p>A: Try refreshing the page. All changes are saved to the database immediately.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config-loader.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories Manager - Electronic Parts Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Electronic Parts Manager</h1>
+            <p>Manage your electronic components inventory</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="parts.html" class="nav-link">Parts</a>
+            <a href="categories.html" class="nav-link active">Categories</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+            <a href="styles.html" class="nav-link">🎨 Styles</a>
+        </nav>
+
+        <!-- Add/Edit Category Form -->
+        <div class="form-container" id="form-section">
+            <h2 id="category-form-title">Add New Category</h2>
+            <form id="category-form">
+                <input type="hidden" id="category-id">
+                
+                <div class="form-group">
+                    <label for="category-name">Category Name *</label>
+                    <input type="text" id="category-name" required placeholder="e.g., Microcontrollers">
+                </div>
+                
+                <div class="form-group">
+                    <label for="parent-category">Parent Category (Optional)</label>
+                    <select id="parent-category">
+                        <option value="">-- None (Top Level Category) --</option>
+                    </select>
+                    <p class="hint">Select a parent to create this as a subcategory</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category-description">Description</label>
+                    <textarea id="category-description" rows="3" placeholder="Enter category description..."></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="category-submit-btn">Add Category</button>
+                    <button type="button" class="btn btn-secondary" id="category-cancel-btn" style="display: none;">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="search-container">
+            <div class="view-toggle">
+                <button id="toggle-view-btn" class="btn btn-toggle" onclick="toggleSubcategoryView()">
+                    <span id="toggle-icon">👁️</span>
+                    <span id="toggle-text">Show Subcategories</span>
+                </button>
+            </div>
+            <button class="btn btn-primary" onclick="toggleForm()">➕ Add New Category</button>
+        </div>
+
+        <!-- Categories Table -->
+        <div class="table-container">
+            <table id="categories-table">
+                <thead>
+                    <tr>
+                        <th style="display: none;">ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Parts Count</th>
+                        <th>Subcategories</th>
+                        <th>Manage Subs</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="categories-tbody">
+                    <tr>
+                        <td colspan="7" class="loading">Loading categories...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <p>Total Categories: <span id="category-count">0</span></p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="config-loader.js"></script>
+    <script src="categories.js"></script>
+</body>
+</html>

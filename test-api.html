@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-section {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        .error {
+            color: #dc3545;
+        }
+        .success {
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Test Page</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Get All Parts</h2>
+        <button onclick="testAllParts()">Test GET All Parts</button>
+        <div id="result-all"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: Get Single Part (ID: 1)</h2>
+        <button onclick="testSinglePart(1)">Test GET Single Part ID 1</button>
+        <div id="result-single-1"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 3: Get Single Part (Custom ID)</h2>
+        <input type="number" id="custom-id" placeholder="Enter part ID" value="1">
+        <button onclick="testSinglePart(document.getElementById('custom-id').value)">Test Custom ID</button>
+        <div id="result-custom"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 4: Check Database Connection</h2>
+        <button onclick="testCategories()">Test GET Categories</button>
+        <div id="result-categories"></div>
+    </div>
+
+    <script>
+        async function testAllParts() {
+            const resultDiv = document.getElementById('result-all');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const response = await fetch('api.php?action=all');
+                console.log('All Parts - Status:', response.status);
+                console.log('All Parts - Headers:', response.headers.get('content-type'));
+                
+                const text = await response.text();
+                console.log('All Parts - Raw response:', text);
+                
+                resultDiv.innerHTML = `
+                    <p class="success">Status: ${response.status}</p>
+                    <p>Content-Type: ${response.headers.get('content-type')}</p>
+                    <p><strong>Raw Response:</strong></p>
+                    <pre>${escapeHtml(text)}</pre>
+                `;
+                
+                try {
+                    const json = JSON.parse(text);
+                    resultDiv.innerHTML += `<p class="success">✓ Valid JSON! Parts count: ${json.data ? json.data.length : 0}</p>`;
+                } catch (e) {
+                    resultDiv.innerHTML += `<p class="error">✗ Invalid JSON: ${e.message}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+                console.error('Error:', error);
+            }
+        }
+        
+        async function testSinglePart(id) {
+            const resultDiv = id === 1 ? document.getElementById('result-single-1') : document.getElementById('result-custom');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const url = `api.php?action=single&id=${id}`;
+                const response = await fetch(url);
+                console.log(`Single Part ${id} - Status:`, response.status);
+                console.log(`Single Part ${id} - Headers:`, response.headers.get('content-type'));
+                
+                const text = await response.text();
+                console.log(`Single Part ${id} - Raw response:`, text);
+                
+                resultDiv.innerHTML = `
+                    <p class="success">Status: ${response.status}</p>
+                    <p>Content-Type: ${response.headers.get('content-type')}</p>
+                    <p><strong>Raw Response:</strong></p>
+                    <pre>${escapeHtml(text)}</pre>
+                `;
+                
+                try {
+                    const json = JSON.parse(text);
+                    if (json.success && json.data) {
+                        resultDiv.innerHTML += `<p class="success">✓ Valid JSON! Part: ${json.data.name}</p>`;
+                    } else {
+                        resultDiv.innerHTML += `<p class="error">✗ Part not found or error: ${json.message || 'Unknown'}</p>`;
+                    }
+                } catch (e) {
+                    resultDiv.innerHTML += `<p class="error">✗ Invalid JSON: ${e.message}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+                console.error('Error:', error);
+            }
+        }
+        
+        async function testCategories() {
+            const resultDiv = document.getElementById('result-categories');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const response = await fetch('api.php?action=categories');
+                console.log('Categories - Status:', response.status);
+                console.log('Categories - Headers:', response.headers.get('content-type'));
+                
+                const text = await response.text();
+                console.log('Categories - Raw response:', text);
+                
+                resultDiv.innerHTML = `
+                    <p class="success">Status: ${response.status}</p>
+                    <p>Content-Type: ${response.headers.get('content-type')}</p>
+                    <p><strong>Raw Response:</strong></p>
+                    <pre>${escapeHtml(text.substring(0, 1000))}</pre>
+                `;
+                
+                try {
+                    const json = JSON.parse(text);
+                    resultDiv.innerHTML += `<p class="success">✓ Valid JSON! Categories count: ${json.data ? json.data.length : 0}</p>`;
+                } catch (e) {
+                    resultDiv.innerHTML += `<p class="error">✗ Invalid JSON: ${e.message}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+                console.error('Error:', error);
+            }
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>

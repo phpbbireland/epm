@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Part - Electronic Parts Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Electronic Parts Manager</h1>
+            <p>Add new electronic component</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="parts.html" class="nav-link active">Parts</a>
+            <a href="categories.html" class="nav-link">Categories</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+        </nav>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="parts.html">← Back to Parts</a>
+            <span class="separator">/</span>
+            <span>Add New Part</span>
+        </div>
+
+        <!-- Add Part Form -->
+        <div class="edit-part-container">
+            <h2>➕ Add New Part</h2>
+            
+            <form id="add-part-form">
+                <div class="form-group">
+                    <label for="name">Part Name *</label>
+                    <input type="text" id="name" required placeholder="e.g., Arduino Uno R3">
+                </div>
+                
+                <div class="form-group">
+                    <label for="thumbnail">Thumbnail Image</label>
+                    <input type="file" id="thumbnail" accept="image/jpeg,image/jpg,image/png,image/gif">
+                    <small class="help-text">JPG, PNG, GIF - max 250KB</small>
+                    <div id="thumbnail-preview" class="thumbnail-preview" style="display: none;">
+                        <img id="thumbnail-preview-img" src="" alt="Thumbnail preview">
+                        <button type="button" class="btn-remove-thumb" onclick="removeThumbnail()">×</button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Category *</label>
+                    <select id="category" required>
+                        <option value="">-- Select Category --</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" min="0" value="0" placeholder="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="value">Value</label>
+                    <input type="text" id="value" placeholder="e.g., 10kΩ, 100µF, 5V">
+                    <small class="help-text">Resistance, capacitance, voltage, etc.</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="size">Size/Package</label>
+                    <input type="text" id="size" placeholder="e.g., 0805, DIP-16, TO-220">
+                    <small class="help-text">Component package or physical size</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="link">Product Link</label>
+                    <input type="url" id="link" placeholder="https://...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="project-folder-link">Project Folder Link</label>
+                    <input type="text" id="project-folder-link" placeholder="file:///C:/Projects/...">
+                    <small class="help-text">Use file:// format for local folders</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="code-folder-link">Code Folder Link</label>
+                    <input type="text" id="code-folder-link" placeholder="file:///C:/Code/...">
+                    <small class="help-text">Use file:// format for local folders</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="freecad-folder-link">FreeCAD Folder Link</label>
+                    <input type="text" id="freecad-folder-link" placeholder="file:///C:/CAD/...">
+                    <small class="help-text">Use file:// format for local folders</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="youtube-link">YouTube Tutorial Link</label>
+                    <input type="url" id="youtube-link" placeholder="https://youtube.com/...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="4" placeholder="Enter part description, notes, or specifications..."></textarea>
+                </div>
+                
+                <div class="edit-actions">
+                    <button type="submit" class="btn btn-primary">➕ Add Part</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelAdd()">✖️ Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Help Info -->
+        <div class="part-info-card">
+            <h3>💡 Quick Tips</h3>
+            <div class="info-row">
+                <span class="info-label">Required Fields:</span>
+                <span class="info-value">Part Name and Category</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Local Folders:</span>
+                <span class="info-value">Use file:// format (click links to copy)</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Categories:</span>
+                <span class="info-value">Create categories first if needed</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">After Adding:</span>
+                <span class="info-value">You'll be redirected to parts list</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="config-loader.js"></script>
+    <script src="add-part.js"></script>
+</body>
+</html>

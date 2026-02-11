@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Part - Electronic Parts Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .part-details-container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .part-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .part-header h2 {
+            margin: 0;
+            color: #333;
+            font-size: 2em;
+        }
+
+        .part-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .detail-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .detail-value {
+            color: #333;
+            font-size: 1.1em;
+            word-break: break-word;
+        }
+
+        .detail-value a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .detail-value a:hover {
+            text-decoration: underline;
+        }
+
+        .detail-full {
+            grid-column: 1 / -1;
+        }
+
+        .thumbnail-section {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+
+        .thumbnail-section img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+        }
+
+        .no-thumbnail {
+            padding: 40px;
+            color: #999;
+            font-style: italic;
+        }
+
+        .stock-badge-large {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .stock-badge-large.in-stock {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .stock-badge-large.low-stock {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .stock-badge-large.out-of-stock {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #666;
+        }
+
+        .error {
+            text-align: center;
+            padding: 60px;
+            color: #dc3545;
+        }
+
+        @media (max-width: 768px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .part-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .part-actions {
+                width: 100%;
+            }
+
+            .part-actions .btn {
+                flex: 1;
+            }
+        }
+
+        /* Dark theme */
+        .dark-theme .part-details-container {
+            background: #0f3460;
+        }
+
+        .dark-theme .part-header h2 {
+            color: #ccd6f6;
+        }
+
+        .dark-theme .detail-item {
+            background: #16213e;
+            border-left-color: #64ffda;
+        }
+
+        .dark-theme .detail-label {
+            color: #a8b2d1;
+        }
+
+        .dark-theme .detail-value {
+            color: #ccd6f6;
+        }
+
+        .dark-theme .detail-value a {
+            color: #64ffda;
+        }
+
+        .dark-theme .thumbnail-section {
+            background: #16213e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Electronic Parts Manager</h1>
+            <p>View component details</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="parts.html" class="nav-link active">Parts</a>
+            <a href="categories.html" class="nav-link">Categories</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+            <a href="styles.html" class="nav-link">🎨 Styles</a>
+        </nav>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="parts.html">← Back to Parts</a>
+            <span class="separator">/</span>
+            <span id="part-name-breadcrumb">View Part</span>
+        </div>
+
+        <!-- Part Details -->
+        <div class="part-details-container" id="part-container">
+            <div class="loading">
+                <p>Loading part details...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="config-loader.js"></script>
+    <script src="part.js"></script>
+</body>
+</html>
