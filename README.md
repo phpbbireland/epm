@@ -187,7 +187,7 @@ epm (electronics_parts_manager)/
 
 ## Browser Compatibility
 
-- Chrome (recommended)
+- Chrome
 - Firefox
 - Safari
 - Edge
@@ -224,13 +224,13 @@ epm (electronics_parts_manager)/
 - Parts location tracking
 
 ## License
-AI geterated code may have restrictions?  
+AI geterated code may have restrictions, I don't know, I'm new to this?  
 Free to use for personal projects.  
 
 ## Recomendations  
 Use on local server only...  
 
 ## Author
-Michael O'Toole  
+Michael O'Toole (2026)  
 
 *Created* with PHP, MySQL, JavaScript & Claude AI
