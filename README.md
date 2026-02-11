@@ -1,4 +1,4 @@
-![Image1](https://github.com/phpbbireland/epm/blob/main/images/epm1.png)  
+![Dashboard](https://github.com/phpbbireland/epm/blob/main/images/epm1.png)  
 
 # Electronic Parts Manager (epm)
 
@@ -122,7 +122,7 @@ epm (electronics_parts_manager)/
 
 1. Fill in the form fields:
    - **Name:** (Required) Name of the electronic part
-   - **Category:** (Required) Category/type of the part
+   - **Category:** (Required) Category/type of the parthttps://github.com/phpbbireland/epm/blob/main/images/epm1.png
    - **Link:** (Optional) URL to product page or datasheet
    - **Description:** (Optional) Additional details
 
@@ -240,5 +240,5 @@ Michael O'Toole (2026)
 
 *Created* with PHP, MySQL, JavaScript & Claude AI  
 
-![Image1](https://github.com/phpbbireland/epm/blob/main/images/epm2.png)  
-![Image1](https://github.com/phpbbireland/epm/blob/main/images/epm3.png)  
+![Image2](https://github.com/phpbbireland/epm/blob/main/images/epm2.png)  
+![Image3](https://github.com/phpbbireland/epm/blob/main/images/epm3.png)  
