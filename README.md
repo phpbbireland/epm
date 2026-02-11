@@ -237,3 +237,4 @@ Use on local server only...
 Michael O'Toole (2026)  
 
 *Created* with PHP, MySQL, JavaScript & Claude AI
+![Image1](https://github.com/phpbbireland/epm/blob/main/images/epm1.png)
