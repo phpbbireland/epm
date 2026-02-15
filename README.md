@@ -4,7 +4,7 @@
 
 A complete web application for managing electronic parts inventory with CRUD operations (Create, Read, Update, Delete). Build with Claude AI and my 2 cents, works perfectly but might needs some UI tweaks.  
 
-**Migration files are only used in development, not required for install, use default database.sql**  
+**Please ignore all Migration and Update files (only added for references during development phase for version 1.0.0), use default database.sql**  
 
 ## Features
 
