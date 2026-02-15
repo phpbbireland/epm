@@ -454,5 +454,6 @@ Michael O'Toole (2026)
 
 *Created* with PHP, MySQL, JavaScript & Claude AI  
 
+We not only track componts, we can also track modules (projects)...  
 ![Image3](https://github.com/phpbbireland/epm/blob/main/images/parts-select800.png)  
 
