@@ -9,7 +9,7 @@ I have almost 1TB (lots of duplicates) of project and associated files relating 
 
 In an ideal world you might grab an older PC or a Pi, install Linux and XAMPP, install this app and see if it meets your needs, if not, you have all the code to make it better...  
 
-**Please ignore all Migration and Update files (only added for references during development phase for version 1.0.0), use default database.sql**  
+**Please ignore all Migration and Update files (only added for references during development phase for version 1.0.0), already included in current database.sql**  
 
 - ✅ **Part Detail View** - Dedicated page for viewing complete part information
 - ✅ **Categories & Subcategories** - Hierarchical organization system
