@@ -92,6 +92,7 @@ The application uses a single table `parts` with the following structure:
 2. Start Apache and MySQL services
    ```
     sudo /opt/lampp/manager-linux-x64.run
+    (command/path dependant on your install type, this is mine)
    ```
 
 3. Access the application:
