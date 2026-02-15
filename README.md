@@ -93,6 +93,9 @@ The application uses a single table `parts` with the following structure:
    ```
     sudo /opt/lampp/manager-linux-x64.run
     (command/path dependant on your install type, this is mine)
+    Manage Services tab -> Select: Start All
+    Notes:
+    As this PC may be connect to the outside world, I stop all services when not in use.
    ```
 
 3. Access the application:
