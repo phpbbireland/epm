@@ -100,7 +100,7 @@ The application uses a single table `parts` with the following structure:
 
 3. Access the application:
    ```
-   epm
+   Browse to: http://127.0.0.1/epm/index.html
    ```
 
 #### Using PHP Built-in Server (Development)
