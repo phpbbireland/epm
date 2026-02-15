@@ -50,13 +50,13 @@ The application uses a single table `parts` with the following structure:
 
 1. Browse to: 127.0.0.1
 2. Select: phpMyAdmin from top Menu
-3. Create the database named: epm
+3. Create the database named: *epm*
 4. (option a) Select SQL (from top menu), add copy the contents of database.sql and paste...
 5. (option b) Select Import (from top menu), Browse to database.sql and import...
 
 ### 2. Database Setup MySQ command line
 
-1. Open phpMyAdmin or MySQL command line
+1. Open MySQL command line
 2. Import the database schema:
    ```sql
    mysql -u root -p < database.sql
