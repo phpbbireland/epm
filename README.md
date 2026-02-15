@@ -131,6 +131,15 @@ epm (electronics_parts_manager)/
 ├── api.php             # Backend API for CRUD operations
 ├── config.php          # Database configuration
 ├── database.sql        # Database schema and sample data
+├── path-converter.js   # path js
+├── path-converter.html # path html
+├── settings.html       # Settings
+├── style.css           # Style
+├── settings.html       # Settings
+├── settings.js         # Settings
+├── subcategories.js    # Subcategories js
+├── subcategories.html  # Subcategories html
+├── other files         # This list of file may not be complete...
 └── README.md           # This file
 ```
 
