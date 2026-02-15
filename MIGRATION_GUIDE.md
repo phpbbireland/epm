@@ -1,3 +1,5 @@
+**Only required for Version 1.0.0 **
+
 # Database Migration Guide
 
 ## If You're Getting "Unknown column 'subcategory_id'" Error
