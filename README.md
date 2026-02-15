@@ -454,6 +454,6 @@ Michael O'Toole (2026)
 
 *Created* with PHP, MySQL, JavaScript & Claude AI  
 
-I have included several additional links to allow me to modules (or projects) as in this example...  
+I have included several additional links to allow tracking of modules and/or projects as in this example...  
 ![Image3](https://github.com/phpbbireland/epm/blob/main/images/parts-select800.png)  
 
