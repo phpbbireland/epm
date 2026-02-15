@@ -2,9 +2,11 @@
 
 # Electronic Parts Manager (epm)
 
-A complete web application for managing electronic parts inventory with CRUD operations (Create, Read, Update, Delete). Build with Claude AI and my 2 cents, works perfectly but might needs some tweaks.  
+A complete web application for managing electronic parts inventory with CRUD operations (Create, Read, Update, Delete). Build with Claude AI and my 2 cents, works perfectly but might needs some tweaks. The project is in development and although fully functioning, the UI and some structures could be nicer.  
 
-The project is in development and although fully functioning, the UI and some structures could be nicer...  
+The intended use is not only to track components but perhaps more importantly for me, to track project source, materials and links.  
+I have almost 1TB (lots of duplicates) of project and associated files relating to development going back to Adam... I need all the helps I can get to locate things ;)  
+
 In an ideal world you might grab an older PC or a Pi, install Linux and XAMPP, install this app and see if it meets your needs, if not, you have all the code to make it better...  
 
 **Please ignore all Migration and Update files (only added for references during development phase for version 1.0.0), use default database.sql**  
