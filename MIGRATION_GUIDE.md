@@ -1,4 +1,4 @@
-**Only required for Version 1.0.0 **
+# Only required for Version 1.0.0
 
 # Database Migration Guide
 
