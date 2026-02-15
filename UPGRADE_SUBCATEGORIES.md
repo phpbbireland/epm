@@ -1,4 +1,4 @@
-# Upgrading to Subcategories Support
+# Upgrading to Subcategories Support for V 1.0.0 only
 
 If you're seeing the error: **"Duplicate entry 'Temperature Sensors-3' for key 'unique_category_name'"**
 
