@@ -32,7 +32,13 @@ The application uses a single table `parts` with the following structure:
 | id | INT (Primary Key, Auto Increment) | Unique identifier |
 | name | VARCHAR(255) | Part name |
 | category | VARCHAR(100) | Part category |
+| quantity | INT(11) | Part Quantity |
+| VALUE| VARCHAR(50) | Part Value |
+| SIZE | VARCHAR(50) | Part Size |
+| THUMBNAIL| VARCHAR(255) | Part Thumbnail |
 | link | VARCHAR(500) | Product/datasheet link |
+| various folder links | VARCHAR(1000) | project code Links 2 |
+| various siter links | VARCHAR(1000) | Site Links 2 |
 | description | TEXT | Part description |
 | created_at | TIMESTAMP | Creation timestamp |
 | updated_at | TIMESTAMP | Last update timestamp |
