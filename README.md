@@ -128,12 +128,13 @@ epm (electronics_parts_manager)/
 ├── index.html          # Main HTML page
 ├── style.css           # Styling
 ├── script.js           # Frontend JavaScript
+├── add-parts.html      # Frontend HTML page
+├── add-parts.js        # Frontend JavaScript
 ├── api.php             # Backend API for CRUD operations
 ├── config.php          # Database configuration
 ├── database.sql        # Database schema and sample data
 ├── path-converter.js   # path js
 ├── path-converter.html # path html
-├── settings.html       # Settings
 ├── style.css           # Style
 ├── settings.html       # Settings
 ├── settings.js         # Settings
